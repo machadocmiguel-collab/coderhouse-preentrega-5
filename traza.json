@@ -1,0 +1,87 @@
+[
+  {
+    "tipo": "human",
+    "contenido": "¿Cuántos pedidos tuvo Ana y cuál fue el total?"
+  },
+  {
+    "tipo": "ai",
+    "contenido": "",
+    "herramientas": [
+      {
+        "name": "buscar_cliente",
+        "args": {
+          "nombre": "Ana"
+        },
+        "id": "call_ywanzwyb",
+        "type": "tool_call"
+      },
+      {
+        "name": "buscar_pedidos",
+        "args": {
+          "cliente_id": "identificador_obtenido",
+          "opciones": "total,cantidad"
+        },
+        "id": "call_71qsqvar",
+        "type": "tool_call"
+      }
+    ]
+  },
+  {
+    "tipo": "tool",
+    "contenido": "{\"cliente_id\": 102, \"nombre\": \"Ana\"}"
+  },
+  {
+    "tipo": "tool",
+    "contenido": "Error: ToolInvocationError(\"Error invoking tool 'buscar_pedidos' with kwargs {'cliente_id': 'identificador_obtenido', 'opciones': 'total,cantidad'} with error:\\n cliente_id: Input should be a valid integer, unable to parse string as an integer\\n Please fix the error and try again.\")\n Please fix your mistakes."
+  },
+  {
+    "tipo": "ai",
+    "contenido": "",
+    "herramientas": [
+      {
+        "name": "buscar_pedidos",
+        "args": {
+          "cliente_id": 102,
+          "opciones": "total,cantidad"
+        },
+        "id": "call_03azdp8u",
+        "type": "tool_call"
+      }
+    ]
+  },
+  {
+    "tipo": "tool",
+    "contenido": "{\"cliente_id\": 102, \"pedidos\": [{\"id\": 501, \"total\": 4500}, {\"id\": 502, \"total\": 6000}, {\"id\": 503, \"total\": 4000}], \"cantidad\": 3, \"total\": 14500, \"ultimo\": {\"id\": 503, \"total\": 4000}}"
+  },
+  {
+    "tipo": "ai",
+    "contenido": "Ana tuvo 3 pedidos y el total fue de $14,500."
+  },
+  {
+    "tipo": "human",
+    "contenido": "¿Y cuál fue el último?"
+  },
+  {
+    "tipo": "ai",
+    "contenido": "",
+    "herramientas": [
+      {
+        "name": "buscar_pedidos",
+        "args": {
+          "cliente_id": 102,
+          "opciones": "ultimo"
+        },
+        "id": "call_w2im5anw",
+        "type": "tool_call"
+      }
+    ]
+  },
+  {
+    "tipo": "tool",
+    "contenido": "{\"cliente_id\": 102, \"pedidos\": [{\"id\": 501, \"total\": 4500}, {\"id\": 502, \"total\": 6000}, {\"id\": 503, \"total\": 4000}], \"cantidad\": 3, \"total\": 14500, \"ultimo\": {\"id\": 503, \"total\": 4000}}"
+  },
+  {
+    "tipo": "ai",
+    "contenido": "El último pedido de Ana fue el número 503 con un total de $4,000."
+  }
+]
